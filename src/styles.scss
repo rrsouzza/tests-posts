@@ -1,39 +1,109 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$test-posts-primary: mat.define-palette(mat.$indigo-palette);
-$test-posts-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$test-posts-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$test-posts-theme: mat.define-light-theme((
-  color: (
-    primary: $test-posts-primary,
-    accent: $test-posts-accent,
-    warn: $test-posts-warn,
-  )
-));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($test-posts-theme);
-
-/* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import 'material-icons/iconfont/material-icons.css';
+
+$light-theme-primary: (
+  50: #e5e9f1,
+  100: #bec7de,
+  200: #94a2c7,
+  300: #6b7fb0,
+  400: #4a64a1,
+  500: #264b93,
+  600: #1f448a,
+  700: #153a7f,
+  800: #0b3173,
+  900: #00215c,
+);
+
+$light-theme-accent: (
+  50: #f9f1e2,
+  100: #f2dcb6,
+  200: #eac687,
+  300: #e2af5a,
+  400: #de9f3d,
+  500: #d8912d,
+  600: #d48729,
+  700: #ce7924,
+  800: #c66c21,
+  900: #ba581d,
+);
+
+$dark-theme-primary: (
+  50: #f9fdf6,
+  100: #f4f8f1,
+  200: #eff3ec,
+  300: #e7ebe4,
+  400: #c5c9c2,
+  500: #a7aba4,
+  600: #7e817b,
+  700: #696c66,
+  800: #4a4c47,
+  900: #282a26,
+);
+
+$dark-theme-accent: (
+  50: #e9f4e8,
+  100: #cae4c6,
+  200: #a8d3a2,
+  300: #86c37e,
+  400: #6db663,
+  500: #56aa47,
+  600: #4d9b3f,
+  700: #418935,
+  800: #37782b,
+  900: #235a1a,
+);
+
+.light-theme {
+  @each $hue, $color in $light-theme-primary {
+    .bg-primary-#{$hue} {
+      background-color: $color;
+    }
+  };
+
+  @each $hue, $color in $light-theme-accent {
+    .bg-accent-#{hue} {
+      background-color: $color;
+    }
+  }
+}
+
+.dark-theme {
+  @each $hue, $color in $dark-theme-primary {
+    .bg-primary-#{$hue} {
+      background-color: $color;
+    }
+  };
+
+  @each $hue, $color in $dark-theme-accent {
+    .bg-accent-#{$hue} {
+      background-color: $color;
+    }
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-light {
+  color: #FAFAFA !important;
+
+  &.hover {
+    &:hover {
+      color: #282a26 !important;
+    }
+  }
+}
+
+.text-dark {
+  color: #282a26 !important;
+
+  &.hover {
+    &:hover {
+      color: #FAFAFA !important;
+    }
+  }
+}

@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'test-posts';
+  currentTheme: 'light-theme' | 'dark-theme' = 'light-theme';
+
+  setTheme(newTheme: 'light-theme' | 'dark-theme'): void {
+    this.currentTheme = newTheme;
+  }
 }
