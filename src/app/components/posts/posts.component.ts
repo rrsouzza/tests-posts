@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { merge } from 'rxjs';
 import { CustomSubscriptionService } from 'src/app/services/custom-subscription/custom-subscription.service';
 import { PostService } from 'src/app/services/post/post.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { CustomSubscription } from 'src/app/utils/interfaces/custom-subscription.interface';
-import { Post } from 'src/app/utils/interfaces/posts.interface';
+import { Post, PostReady } from 'src/app/utils/interfaces/posts.interface';
+import { User } from 'src/app/utils/interfaces/users.interface';
 
 @Component({
   selector: 'app-posts',
@@ -19,25 +19,40 @@ export class PostsComponent implements OnInit, OnDestroy {
   ) {
     this.customSub.push({
       sub: this.postService.getPosts().subscribe({
-        next: (res: Array<Post>) => {
-          // console.log('res: ', res);
-          this.postList = res;
+        next: (posts: Array<Post>) => {
+          this.postList = posts;
+          this.customSub.push({
+            sub: this.userService.getUsers().subscribe({
+              next: (users: Array<User>) => {
+                this.userList = users;
+              },
+              error: (err) => {
+                console.error('An error occured while trying to retrieve users: ', err);
+              },
+              complete: () => {
+                this.createPostsReady();
+              }
+            }),
+            description: 'Subscribe to getUsers',
+            isActive: true,
+          });
         },
+        error: (err) => {
+          console.error('An error occurred while trying to retrieve posts: ', err);
+        }
       }),
       description: 'Subscribe to getPosts',
       isActive: true,
     });
-
-    // // merge([this.postService.getPosts(), this.userService.getUsers()]).subscribe({
-    // //   next: (res) => {
-    // //     console.log('res: ', res);
-    // //   }
-    // // })
   }
 
   customSub: Array<CustomSubscription> = [];
 
   postList: Array<Post>;
+
+  userList: Array<User>;
+
+  postReadyList: Array<PostReady> = [];
 
   ngOnInit(): void {
 
@@ -45,5 +60,12 @@ export class PostsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.customSubscriptionService.clearSubscriptions(this.customSub);
+  }
+
+  createPostsReady() {
+    this.postList.forEach((post) => {
+      const user = this.userList.find((user) => user.id === post.userId);
+      this.postReadyList.push({...post, username: user ? user.username : '--' });
+    });
   }
 }

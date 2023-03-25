@@ -1,59 +1,96 @@
 html, body { height: 100%; }
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Lato, 'Helvetica Neue', sans-serif;
+  color: #202020;
+};
+
+a {
+  text-decoration: none;
+}
 
 @import 'material-icons/iconfont/material-icons.css';
 
 $light-theme-primary: (
-  50: #e5e9f1,
-  100: #bec7de,
-  200: #94a2c7,
-  300: #6b7fb0,
-  400: #4a64a1,
-  500: #264b93,
-  600: #1f448a,
-  700: #153a7f,
-  800: #0b3173,
-  900: #00215c,
+  50: #d9f1fe,
+  100: #b7d9e4,
+  200: #96bdcb,
+  300: #72a1b2,
+  400: #588c9f,
+  500: #607d8b,
+  600: #2f697b,
+  700: #215666,
+  800: #134351,
+  900: #002e3a,
+  A100: #b7d9e4,
+  A200: #96bdcb,
+  A400: #588c9f,
+  A700: #215666,
 );
 
 $light-theme-accent: (
-  50: #f9f1e2,
-  100: #f2dcb6,
-  200: #eac687,
-  300: #e2af5a,
-  400: #de9f3d,
-  500: #d8912d,
-  600: #d48729,
-  700: #ce7924,
-  800: #c66c21,
-  900: #ba581d,
+  50: #fee8e6,
+  100: #ffcab8,
+  200: #ffa88a,
+  300: #ff855a,
+  400: #ff6835,
+  500: #ff4a05,
+  600: #fe4400,
+  700: #f03c00,
+  800: #e23400,
+  900: #cb2100,
+  A100: #ffcab8,
+  A200: #ffa88a,
+  A400: #ff6835,
+  A700: #f03c00,
 );
 
 $dark-theme-primary: (
-  50: #f9fdf6,
-  100: #f4f8f1,
-  200: #eff3ec,
-  300: #e7ebe4,
-  400: #c5c9c2,
-  500: #a7aba4,
-  600: #7e817b,
-  700: #696c66,
-  800: #4a4c47,
-  900: #282a26,
+  50: #eafcf8,
+  100: #e2f4ef,
+  200: #d8e9e5,
+  300: #c7d8d4,
+  400: #a3b3af,
+  500: #83938f,
+  600: #5b6b67,
+  700: #495754,
+  800: #2b3936,
+  900: #0a1916,
+  A100: #e2f4ef,
+  A200: #d8e9e5,
+  A400: #a3b3af,
+  A700: #495754,
 );
 
 $dark-theme-accent: (
-  50: #e9f4e8,
-  100: #cae4c6,
-  200: #a8d3a2,
-  300: #86c37e,
-  400: #6db663,
-  500: #56aa47,
-  600: #4d9b3f,
-  700: #418935,
-  800: #37782b,
-  900: #235a1a,
+  50: #f9e8e7,
+  100: #fcc9bd,
+  200: #faa792,
+  300: #f88468,
+  400: #f76848,
+  500: #f64d2b,
+  600: #ec4727,
+  700: #de4122,
+  800: #d03a1e,
+  900: #b62e16,
+  A100: #fcc9bd,
+  A200: #faa792,
+  A400: #f76848,
+  A700: #de4122,
+);
+
+$grey-theme: (
+  50: #fdf8ff,
+  100: #f8f3fe,
+  200: #f1ecf7,
+  300: #e3dfe9,
+  400: #c0bcc6,
+  500: #a19da7,
+  600: #78747d,
+  700: #646069,
+  800: #44414a,
+  900: #232028,
 );
 
 .light-theme {
@@ -61,11 +98,47 @@ $dark-theme-accent: (
     .bg-primary-#{$hue} {
       background-color: $color;
     }
+
+    @media screen and (min-width: 768px) {
+      .bg-primary-#{$hue}-768px {
+        background-color: $color;
+      }
+    }
+
+    @media screen and (min-width: 992px) {
+      .bg-primary-#{$hue}-992px {
+        background-color: $color;
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      .bg-primary-#{$hue}-1200px {
+        background-color: $color;
+      }
+    }
   };
 
   @each $hue, $color in $light-theme-accent {
-    .bg-accent-#{hue} {
+    .bg-accent-#{$hue} {
       background-color: $color;
+    }
+
+    @media screen and (min-width: 768px) {
+      .bg-accent-#{$hue}-768px {
+        background-color: $color;
+      }
+    }
+
+    @media screen and (min-width: 992px) {
+      .bg-accent-#{$hue}-992px {
+        background-color: $color;
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      .bg-accent-#{$hue}-1200px {
+        background-color: $color;
+      }
     }
   }
 }
@@ -75,12 +148,83 @@ $dark-theme-accent: (
     .bg-primary-#{$hue} {
       background-color: $color;
     }
+
+    .bg-primary-dark-#{$hue} {
+      background-color: $color;
+    }
+
+    @media screen and (min-width: 768px) {
+      .bg-primary-#{$hue}-768px {
+        background-color: $color;
+      }
+    }
+
+    @media screen and (min-width: 992px) {
+      .bg-primary-#{$hue}-992px {
+        background-color: $color;
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      .bg-primary-#{$hue}-1200px {
+        background-color: $color;
+      }
+    }
   };
 
   @each $hue, $color in $dark-theme-accent {
     .bg-accent-#{$hue} {
       background-color: $color;
     }
+
+    @media screen and (min-width: 768px) {
+      .bg-accent-#{$hue}-768px {
+        background-color: $color;
+      }
+    }
+
+    @media screen and (min-width: 992px) {
+      .bg-accent-#{$hue}-992px {
+        background-color: $color;
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      .bg-accent-#{$hue}-1200px {
+        background-color: $color;
+      }
+    }
+  }
+
+  .text-light-bg-dark {
+    color: #F5F2F2 !important;
+  }
+
+  .no-border-bg-dark {
+    border: none !important;
+  }
+}
+
+@each $hue, $color in $grey-theme {
+  .bg-grey-#{$hue} {
+    background-color: $color;
+  }
+}
+
+$font-sizes: (
+  8: 8px,
+  10: 10px,
+  11: 11px,
+  12: 12px,
+  14: 14px,
+  16: 16px,
+  18: 18px,
+  22: 22px,
+);
+
+@each $size, $value in $font-sizes {
+  .f-#{$size} {
+    font-size: $value;
   }
 }
 
@@ -106,4 +250,73 @@ $dark-theme-accent: (
       color: #FAFAFA !important;
     }
   }
+}
+
+.box-limited {
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &.box-limited::-webkit-scrollbar {
+    width: 3px;
+    border-radius: 3px;
+  }
+
+  &.box-limited::-webkit-scrollbar-track {
+    background: #cccccc;
+  }
+
+  &.box-limited::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  &.box-limited::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+.box-limited-768px {
+  @media screen and (min-width: 768px) {
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &.box-limited-768px::-webkit-scrollbar {
+      width: 3px;
+      border-radius: 3px;
+    }
+
+    &.box-limited-768px::-webkit-scrollbar-track {
+      background: #cccccc;
+    }
+
+    &.box-limited-768px::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+
+    &.box-limited-768px::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  }
+}
+
+.border-top {
+  border: none;
+  border-top-width: 100%;
+}
+.border-top-rounded {
+  border-radius: 10px 10px 0 0;
+}
+
+.border-bottom {
+  border: none;
+  border-bottom-width: 100%;
+}
+.border-bottom-rounded {
+  border-radius: 0 0 10px 10px;
+}
+
+.rounded {
+  border-radius: 10px !important;
+}
+
+.no-border {
+  border: none !important;
 }
