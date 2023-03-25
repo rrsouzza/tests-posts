@@ -8,3 +8,11 @@ export interface Post {
 export interface PostReady extends Post {
   username: string;
 }
+
+export interface PostComment {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+}

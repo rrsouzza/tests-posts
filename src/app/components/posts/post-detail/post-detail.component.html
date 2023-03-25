@@ -1,1 +1,70 @@
-<p>post-detail works!</p>
+<ng-container *ngIf="isModalVisible">
+  <app-modal
+    [headerTitle]="'Comentários'"
+    [width]="'60vw'"
+    (closeModal)="handleCloseModal()"
+  >
+    <!-- <div class="card mb-4 no-border-bg-dark">
+      <div class="d-flex card-header justify-content-between bg-primary-600 bg-primary-dark-800 f-18">
+        <span
+          class="text-light cursor-pointer hover"
+          (click)="handleUserClick(post.userId)"
+          >
+          {{ post.username }}
+        </span>
+      </div>
+      <div class="card-body bg-primary-dark-500 text-light-bg-dark">
+        <h5 class="card-title f-18 border-bottom">{{ post.title }}</h5>
+        <p class="card-text p-2 f-16">{{ post.body }}</p>
+      </div>
+    </div> -->
+
+    <!-- <mat-divider></mat-divider> -->
+    <div class="post-box mt-2 p-2 bg-primary-800 text-dark rounded">
+      <div class="post p-2 m-0 box-shadow-inset shadow-dark bg-primary-600 text-light rounded">
+        <div class="post-username px-2">
+          <h4 class="f-18">{{ post.username }}</h4>
+        </div>
+        <div class="post-body p-2">
+          <h2 class="post-title strong f-16 border-bottom border-dark">{{ post.title }}</h2>
+          <p class="post-body">{{ post.body }}</p>
+        </div>
+      </div>
+
+      <div class="post-comments p-2 bg-primary-800 mt-4 rounded box-limited">
+        <ng-container *ngFor="let comment of commentList">
+          <div class="post-comment rounded my-3 bg-primary-600 p-2">
+            <div class="d-flex post-comment-info justify-content-between text-light">
+              <span class="f-14 strong">{{ comment.name }}</span>
+              <span class="f-12 text-muted">{{ comment.email }}</span>
+            </div>
+            <div class="post-comment-body rounded p-2 bg-primary-300">
+              <p>{{ comment.body }}</p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </app-modal>
+</ng-container>
+
+<div class="card mb-4 no-border-bg-dark">
+  <div class="d-flex card-header justify-content-between bg-primary-600 bg-primary-dark-800 f-18">
+    <span
+      class="text-light cursor-pointer hover"
+      (click)="handleUserClick(post.userId)"
+      >
+      {{ post.username }}
+    </span>
+    <button
+      class="btn bg-primary-400 text-uppercase btn-sm strong f-12 cursor-pointer hover"
+      (click)="handleOpenComments()"
+      >
+      Comentários
+    </button>
+  </div>
+  <div class="card-body bg-primary-dark-500 text-light-bg-dark">
+    <h5 class="card-title f-18 border-bottom">{{ post.title }}</h5>
+    <p class="card-text p-2 f-16">{{ post.body }}</p>
+  </div>
+</div>

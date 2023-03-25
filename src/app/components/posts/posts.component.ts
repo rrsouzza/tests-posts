@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomSubscriptionService } from 'src/app/services/custom-subscription/custom-subscription.service';
 import { PostService } from 'src/app/services/post/post.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -15,7 +16,9 @@ export class PostsComponent implements OnInit, OnDestroy {
   constructor(
     private postService: PostService,
     private userService: UserService,
-    private customSubscriptionService: CustomSubscriptionService
+    private customSubscriptionService: CustomSubscriptionService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) {
     this.customSub.push({
       sub: this.postService.getPosts().subscribe({
@@ -44,6 +47,14 @@ export class PostsComponent implements OnInit, OnDestroy {
       description: 'Subscribe to getPosts',
       isActive: true,
     });
+
+    this.activatedRoute.params.subscribe({
+      next: (params) => {
+        if (params['id']) {
+          this.currentPostId = Number(params['id']);
+        }
+      }
+    })
   }
 
   customSub: Array<CustomSubscription> = [];
@@ -53,6 +64,8 @@ export class PostsComponent implements OnInit, OnDestroy {
   userList: Array<User>;
 
   postReadyList: Array<PostReady> = [];
+
+  currentPostId: number;
 
   ngOnInit(): void {
 
@@ -68,4 +81,6 @@ export class PostsComponent implements OnInit, OnDestroy {
       this.postReadyList.push({...post, username: user ? user.username : '--' });
     });
   }
+
+
 }

@@ -81,16 +81,16 @@ $dark-theme-accent: (
 );
 
 $grey-theme: (
-  50: #fdf8ff,
-  100: #f8f3fe,
-  200: #f1ecf7,
-  300: #e3dfe9,
-  400: #c0bcc6,
-  500: #a19da7,
-  600: #78747d,
-  700: #646069,
-  800: #44414a,
-  900: #232028,
+  50: #FAFAFA,
+  100: #F5F5F5,
+  200: #EEEEEE,
+  300: #E0E0E0,
+  400: #BDBDBD,
+  500: #9E9E9E,
+  600: #757575,
+  700: #616161,
+  800: #424242,
+  900: #212121,
 );
 
 .light-theme {
@@ -313,10 +313,53 @@ $font-sizes: (
   border-radius: 0 0 10px 10px;
 }
 
+.border-light {
+  border-color: #CCC;
+}
+.border-dark {
+  border-color: #0a1916;
+}
+
 .rounded {
   border-radius: 10px !important;
 }
 
 .no-border {
   border: none !important;
+}
+
+.strong {
+  font-weight: 600;
+}
+
+.box-shadow {
+  &.shadow-dark {
+    box-shadow: 0px 0px 2px 2px #0a1916;
+  };
+
+  &.shadow-smooth {
+    box-shadow: 0px 0px 2px 2px #585858;
+  }
+
+  &.shadow-light {
+    box-shadow: 0px 0px 2px 2px #CCC;
+  }
+}
+
+.box-shadow-inset {
+  &.shadow-dark {
+    box-shadow: inset 0px 0px 2px 2px #0a1916;
+  };
+
+  &.shadow-smooth {
+    box-shadow: inset 0px 0px 2px 2px #585858;
+  }
+
+  &.shadow-light {
+    box-shadow: inset 0px 0px 2px 2px #CCC;
+  }
+}
+
+.bg-light {
+  background-color: #FAFAFA;
 }

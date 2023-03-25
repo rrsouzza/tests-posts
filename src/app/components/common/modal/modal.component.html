@@ -1,0 +1,25 @@
+<div *ngIf="isVisible">
+  <div>
+    <div class="modal">
+      <div class="outside" (click)="closeModal.emit()"></div>
+      <mat-card [style]="{ width: width }" class="modal_body p-3 d-flex flex-column bg-primary-700 text-light">
+        <header>
+          <div class="d-flex w-100 justify-content-between">
+            <legend [ngClass]="headerSubtitle ? 'mb-0' : ''">{{ headerTitle }}</legend>
+            <button class="btn btn-sm" (click)="closeModal.emit()">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+          <ng-container *ngIf="headerSubtitle">
+            <div class="w-100 justify-content-start mb-3">
+              <span class="text-muted">{{ headerSubtitle }}</span>
+            </div>
+          </ng-container>
+        </header>
+        <aside class="body_content box-limited">
+          <ng-content></ng-content>
+        </aside>
+      </mat-card>
+    </div>
+  </div>
+</div>

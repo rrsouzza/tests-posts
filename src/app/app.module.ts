@@ -12,6 +12,8 @@ import { UserDetailComponent } from './components/users/user-detail/user-detail.
 import { PostService } from './services/post/post.service';
 import { UserService } from './services/user/user.service';
 import { CustomSubscriptionService } from './services/custom-subscription/custom-subscription.service';
+import { ModalComponent } from './components/common/modal/modal.component';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,15 @@ import { CustomSubscriptionService } from './services/custom-subscription/custom
     PostsComponent,
     PostDetailComponent,
     UsersComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [PostService, UserService, CustomSubscriptionService],
   bootstrap: [AppComponent]
