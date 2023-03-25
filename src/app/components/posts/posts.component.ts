@@ -54,7 +54,7 @@ export class PostsComponent implements OnInit, OnDestroy {
           this.currentPostId = Number(params['id']);
         }
       }
-    })
+    });
   }
 
   customSub: Array<CustomSubscription> = [];

@@ -1,1 +1,25 @@
-<p>users works!</p>
+<div class="container d-flex justify-content-center">
+  <div class="mt-6 p-3 rounded bg-primary-600">
+    <table class="table table-striped table-responsive bg-primary-300 border-dark rounded">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of usersList" class="table-row cursor-pointer" (click)="handleUserClick(user.id)">
+          <th scope="row" class="p-2">{{ user.name }}</th>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <app-user-detail
+            [user]="user"
+            [isModalVisible]="currentUserId === user.id"
+          >
+          </app-user-detail>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

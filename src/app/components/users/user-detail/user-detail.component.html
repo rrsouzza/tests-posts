@@ -1,1 +1,14 @@
-<p>user-detail works!</p>
+<ng-container *ngIf="isModalVisible">
+  <app-modal
+    [headerTitle]="'Usuário'"
+    [width]="'60vw'"
+    (closeModal)="handleCloseModal()"
+  >
+    <mat-form-field appearance="fill" [floatLabel]="'auto'">
+      <mat-label>Both a label and a placeholder</mat-label>
+      <input matInput placeholder="Simple placeholder">
+    </mat-form-field>
+
+    Teste 123
+  </app-modal>
+</ng-container>
